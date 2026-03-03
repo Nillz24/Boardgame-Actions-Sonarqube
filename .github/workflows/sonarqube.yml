@@ -70,7 +70,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.debug=true 
+            -X
 
       # Check the Quality Gate status.
       - name: SonarQube Quality Gate check
