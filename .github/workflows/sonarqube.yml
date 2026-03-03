@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 env:
-  APP_NAME: devopsshack-java-demo
+  APP_NAME: nillz-java-demo
 
 jobs:
 
