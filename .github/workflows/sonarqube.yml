@@ -77,7 +77,8 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.ws.timeout=240
+            -Dsonar.scanner.skipSystemTruststore=true
+            -Dsonar.scanner.socketTimeout=240
             -X
 
       # Check the Quality Gate status.
@@ -86,8 +87,7 @@ jobs:
         uses: sonarsource/sonarqube-quality-gate-action@master
         with:
           pollingTimeoutSec: 1200
-          scanMetadataReportFile: target/sonar/report-task.txt
-       
+          timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
