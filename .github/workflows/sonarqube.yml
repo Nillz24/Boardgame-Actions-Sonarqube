@@ -78,7 +78,7 @@ jobs:
       - name: SonarQube Quality Gate check
         id: sonarqube-quality-gate-check
         uses: sonarsource/sonarqube-quality-gate-action@v1
-        timeout-minutes: 30
+        timeout-minutes: 31
        # with:
        #   pollingTimeoutSec: 1800          
         env:
