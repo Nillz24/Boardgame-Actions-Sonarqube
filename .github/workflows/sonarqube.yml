@@ -71,16 +71,16 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.scanner.socketTimeout=600
+            -Dsonar.scanner.socketTimeout=6000
             -X
 
       # Check the Quality Gate status.
       - name: SonarQube Quality Gate check
         id: sonarqube-quality-gate-check
-        uses: sonarsource/sonarqube-quality-gate-action@v1
+        uses: sonarsource/sonarqube-quality-gate-action@master
         timeout-minutes: 31
-       # with:
-       #   pollingTimeoutSec: 1800          
+        with:
+          pollingTimeoutSec: 1800          
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
