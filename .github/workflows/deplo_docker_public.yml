@@ -66,15 +66,15 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t ${{env.DOCKERHUB_USERNAME}}/Boardgame:latest .
-        docker tag ${{env.DOCKERHUB_USERNAME}}/Boardgame:latest ${{env.DOCKERHUB_USERNAME}}/Boardgame:${{ github.sha }}
+        docker build -t ${{env.DOCKERHUB_USERNAME}}/boardgame:latest .
+        docker tag ${{env.DOCKERHUB_USERNAME}}/boardgame:latest ${{env.DOCKERHUB_USERNAME}}/boardgame:${{ github.sha }}
       # The image is built and tagged locally in this step, not pushed yet.
 
 
     - name: Run Trivy vulnerability scan
       uses: aquasecurity/trivy-action@master
       with:
-        image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/Boardgame:latest'
+        image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/boardgame:latest'
         format: 'table'
         exit-code: '0' # Fails the step if vulnerabilities are found
         ignore-unfixed: true
@@ -92,8 +92,8 @@ jobs:
     - name: Push Docker image to Docker Hub
       # This step only runs if the previous 'Run Trivy vulnerability scan' step succeeds (i.e., exit-code 0).
       run: |
-        docker push ${{ env.DOCKERHUB_USERNAME }}/Boardgame:latest
-        docker push ${{ env.DOCKERHUB_USERNAME }}/Boardgame:${{ github.sha }}
+        docker push ${{ env.DOCKERHUB_USERNAME }}/boardgame:latest
+        docker push ${{ env.DOCKERHUB_USERNAME }}/boardgame:${{ github.sha }}
 
     - name: Upload Trivy scan results to GitHub summary
       if: always()
