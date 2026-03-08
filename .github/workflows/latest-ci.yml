@@ -56,7 +56,7 @@ jobs:
 
       - name: SonarQube Analysis
         run: |
-          mvn -B  sonar:sonar \
+          mvn -B clean verify sonar:sonar \
           -Dproject.settings=sonar-project-ci.properties \
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
