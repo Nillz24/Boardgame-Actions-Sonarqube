@@ -112,6 +112,7 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/boardgame:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/boardgame:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/boardgame:${{ needs.build_sonar-scan.outputs.version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -126,3 +127,4 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/boardgame:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/boardgame:${{ github.sha }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/boardgame:${{ needs.build_sonar-scan.outputs.version }}
