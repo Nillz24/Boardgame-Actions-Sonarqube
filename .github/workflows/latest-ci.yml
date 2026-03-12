@@ -60,7 +60,7 @@ jobs:
           -Dproject.settings=sonar-project-ci.properties \
           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-          -Dsonar.qualitygate.wait=true
+          -Dsonar.qualitygate.wait=true \
           -Dsonar.qualitygate.timeout=600
 
   security:
